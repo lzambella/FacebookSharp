@@ -14,6 +14,9 @@ namespace FacebookSharp.GraphAPI
         /// Ad label ID
         /// </summary>
         string id { get; set; }
-        // TODO: finish AdAccount
+        public AdAccount account { get; set; }
+        public string created_time { get; set; }
+        public string name { get; set; }
+        public string updated_time { get; set; }
     }
 }

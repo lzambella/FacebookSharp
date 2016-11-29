@@ -13,11 +13,11 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// The string act_{ad_account_id}
         /// </summary>
-        string id { get; set; }
+        public string id { get; set; }
         /// <summary>
         /// The ID of the ad account
         /// </summary>
-        string account_id { get; set; }
+        public string account_id { get; set; }
         /// <summary>
         /// Status of the account 
         /// 1 = ACTIVE
@@ -31,74 +31,103 @@ namespace FacebookSharp.GraphAPI
         /// 201 = ANY_ACTIVE
         /// 202 = ANY_CLOSED
         /// </summary>
-        Int32 account_status { get; set; }
+        public Int32 account_status { get; set; }
         /// <summary>
         /// Amount of time the ad account has been open, in days
         /// </summary>
-        float age { get; set; }
+        public float age { get; set; }
         /// <summary>
         /// Details of the agency advertising on behalf of this client account, if applicable
         /// </summary>
-        AgencyClientDeclaration agency_client_declaration { get; set; }
+        public AgencyClientDeclaration agency_client_declaration { get; set; }
         /// <summary>
         /// Current total amount spent by the account. This can be reset.
         /// </summary>
-        string amount_spent { get; set; }
+        public string amount_spent { get; set; }
         /// <summary>
         /// The attribution specification of ad account, including click through window length, view through window length, etc.
         /// </summary>
-        IList<object> attribution_spec { get; set; }
+        public IList<object> attribution_spec { get; set; }
         /// <summary>
         /// Bill amount due
         /// </summary>
-        string balance { get; set; }
+        public string balance { get; set; }
         /// <summary>
         /// The Business Manager, if this ad account is owned by one.
         /// </summary>
-        Business business { get; set; }
+        public Business business { get; set; }
         /// <summary>
         /// City for business address
         /// </summary>
-        string business_city { get; set; }
+        public string business_city { get; set; }
         /// <summary>
         /// Country code for the business address
         /// </summary>
-        string business_county_code { get; set; }
+        public string business_county_code { get; set; }
         /// <summary>
         /// The business name for the account
         /// </summary>
-        string business_name { get; set; }
+        public string business_name { get; set; }
         /// <summary>
         /// First line of the business street address for the account
         /// </summary>
-        string business_street { get; set; }
+        public string business_street { get; set; }
         /// <summary>
         /// Second line of the business street address for the account
         /// </summary>
-        string business_street2 { get; set; }
+        public string business_street2 { get; set; }
         /// <summary>
         /// Zip code for business address
         /// </summary>
-        string business_zip { get; set; }
+        public string business_zip { get; set; }
         /// <summary>
         /// If we can create a new automated brand lift study under the ad account.
         /// </summary>
-        bool can_create_brand_lift_study { get; set; }
+        public bool can_create_brand_lift_study { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        IList<string> capabilities { get; set; }
+        public IList<string> capabilities { get; set; }
         /// <summary>
         /// The time the account was created in ISO 8601 format.
         /// </summary>
-        DateTime created_time { get; set; }
+        public DateTime created_time { get; set; }
         /// <summary>
         /// The currency used for the account, based on the corresponding value in the account settings. 
         /// </summary>
-        string currency { get; set; }
-        UInt32 disable_reason { get; set; }
-        string end_advertiser { get; set; }
-        string end_advertiser_name { get; set; }
-        //continue from falied_delivery_checks
+        public string currency { get; set; }
+        public UInt32 disable_reason { get; set; }
+        public string end_advertiser { get; set; }
+        public string end_advertiser_name { get; set; }
+        public IList<DeliveryChecks> failed_DeliveryChecks { get; set; }
+        public string funding_source { get; set; }
+        //TODO: Find out what this object is
+        public object funding_source_details { get; set; }
+        public bool has_migrated_permissions { get; set; }
+        public string io_number { get; set; }
+        public bool is_notifications_enabled { get; set; }
+        public UInt32 is_personal { get; set; }
+        public bool is_prepay_account { get; set; }
+        public bool is_tax_id_required { get; set; }
+        public IList<int> line_numbers { get; set; }
+        public string media_agency { get; set; }
+        public string min_campaign_group_spend_cap { get; set; }
+        public UInt32 min_daily_budget { get; set; }
+        public string name { get; set; }
+        public bool offsite_pixels_tos_accepted { get; set; }
+        public string owner { get; set; }
+        public string partner { get; set; }
+        public ReachAndFrequencySpec rf_spec { get; set; }
+        public string salesforce_invoice_group_id { get; set; }
+        public bool show_checkout_experience { get; set; }
+        public string spend_cap { get; set; }
+        public string tax_id { get; set; }
+        public UInt32 tax_id_status { get; set; }
+        public string tax_id_type { get; set; }
+        public UInt32 timezone_id { get; set; }
+        public string timezone_name { get; set; }
+        public float timezone_offset_hours_utc { get; set; }
+        public Tuple<string,int> tos_accepted { get; set; }
+        public string user_role { get; set; }
     }
 }
