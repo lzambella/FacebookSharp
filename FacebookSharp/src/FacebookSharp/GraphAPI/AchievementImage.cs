@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 namespace FacebookSharp.GraphAPI
 {
     public class AchievementImage
@@ -10,14 +10,17 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// Location of the achievement image
         /// </summary>
-        string url { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
         /// <summary>
         /// Pixel width of the image
         /// </summary>
-        int width { get; set; }
+        [JsonProperty("width")]
+        public int Width { get; set; }
         /// <summary>
         /// Pixel height of the image
         /// </summary>
-        int height { get; set; }
+        [JsonProperty("height")]
+        public int Height { get; set; }
     }
 }

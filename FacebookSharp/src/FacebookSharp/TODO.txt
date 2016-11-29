@@ -1,0 +1,3 @@
+﻿TODO:
+1. Finish creating objects for the Graph Api
+2. Change all current objects to use [JsonProperty()] Attribute and change the names to C# standard

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -11,50 +12,64 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// ID of the achievement type
         /// </summary>
-        string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
         /// <summary>
         /// The value will be games.achievement
         /// </summary>
-        string type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
         /// <summary>
         /// Title of achievement
         /// </summary>
-        string title { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
         /// <summary>
         /// Unique URL of the achievement
         /// </summary>
-        string url { get; set; }
+        [JsonProperty("url")]
+        public string Url { get; set; }
         /// <summary>
         /// Description of the achievement
         /// </summary>
-        string description { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
         /// <summary>
         /// Image for the achievement
         /// </summary>
-        AchievementImage image { get; set; }
+        [JsonProperty("image")]
+        public AchievementImage Image { get; set; }
         /// <summary>
         /// An object containing the points this achievement is worth.
         /// </summary>
-        PointsData data { get; set; }
+        [JsonProperty("data")]
+        public PointsData Data { get; set; }
         /// <summary>
         /// Time when the achievement was last updated
         /// </summary>
-        DateTime updated_time { get; set; }
+        //TODO: Change to DateTime later
+        [JsonProperty("updated_time")]
+        public string UpdatedTime { get; set; }
         /// <summary>
         /// Time when the achievement was created
         /// </summary>
-        DateTime created_time { get; set; }
+        //TODO: Change to DateTime later
+        [JsonProperty("created_time")]
+        public string CreatedTime { get; set; }
         /// <summary>
         /// The app that created the achievement.
         /// </summary>
-        App application { get; set; }
+        [JsonProperty("application")]
+        public App Application { get; set; }
         /// <summary>
         /// Context of the achievement for the associated app
         /// </summary>
-        IList<int> context { get; set; }
+        [JsonProperty("context")]
+        public IList<int> Context { get; set; }
         /// <summary>
         /// Whether the URL containing the achievement metadata has been scraped by Facebook servers.
         /// </summary>
-        bool is_scraped { get; set; }
+        [JsonProperty("is_scraped")]
+        public bool IsScraped { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -10,30 +11,37 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// ID of this particular achievement.
         /// </summary>
-        string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
         /// <summary>
         /// The user who achieved this.
         /// </summary>
-        User from { get; set; }
+        [JsonProperty("from")]
+        public User From { get; set; }
         /// <summary>
         /// Time at which this was achieved.
         /// </summary>
-        DateTime publish_time { get; set; }
+        [JsonProperty("publish_time")]
+        public DateTime PublishTime { get; set; }
         /// <summary>
         /// The app in which the user achieved this.
         /// </summary>
-        App application { get; set; }
+        [JsonProperty("application")]
+        public App Application { get; set; }
         /// <summary>
         /// Information about the achievement type this instance is connected with.
         /// </summary>
-        Data data { get; set; }
+        [JsonProperty("data")]
+        public Data Data { get; set; }
         /// <summary>
         /// Always game.achievement.
         /// </summary>
-        string type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
         /// <summary>
         /// Indicates whether gaining the achievement published a feed story for the user.
         /// </summary>
-        bool no_feed_story { get; set; }
+        [JsonProperty("no_feed_story")]
+        bool NoFeedStory { get; set; }
     }
 }
