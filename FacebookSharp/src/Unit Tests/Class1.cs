@@ -22,7 +22,7 @@ namespace UnitTests
             // Get token from token.txt (ignored by git)
             var token = LoadToken();
 
-            var graphApi = new GraphApi(token, GraphApi.ApiVersion.TWO_EIGHT);
+            var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
             var page = await graphApi.GetPage("100008443867581");
             var id = page.id;
             Console.WriteLine(id);

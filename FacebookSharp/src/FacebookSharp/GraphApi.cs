@@ -13,10 +13,16 @@ namespace FacebookSharp
         /// </summary>
         public enum ApiVersion
         {
-            TWO_EIGHT,
+            TwoEight,
         }
-        private string _token { get; set; }
-        private ApiVersion _version { get; set; }
+        /// <summary>
+        /// Graph API Token
+        /// </summary>
+        private string Token { get; set; }
+        /// <summary>
+        /// API version to use
+        /// </summary>
+        private ApiVersion Version { get; set; }
         /// <summary>
         /// Create a new GraphApi object that allows
         /// use of the Facebook API
@@ -24,22 +30,22 @@ namespace FacebookSharp
         /// <param name="token">Graph API token</param>
         public GraphApi(string token, ApiVersion version)
         {
-            _token = token;
-            _version = version;
+            Token = token;
+            Version = version;
         }
         /// <summary>
         /// Gets the page of a facebook user with a specific ID
         /// </summary>
         /// <param name="id">ID of the user to get from</param>
-        /// <returns></returns>
+        /// <returns>Page object containing only the username and id</returns>
         public async Task<Page> GetPage(string id)
         {
             //TODO: Api appears to only return the user name and id, find out how to add all the other parameters defined in the Page documentation
             var http = "";
-            switch (_version)
+            switch (Version)
             {
-                case ApiVersion.TWO_EIGHT:
-                    http = $"https://graph.facebook.com/v2.8/{id}?access_token={_token}";
+                case ApiVersion.TwoEight:
+                    http = $"https://graph.facebook.com/v2.8/{id}?access_token={Token}";
                     break;
             }
             var request = WebRequest.Create(http);
@@ -54,6 +60,16 @@ namespace FacebookSharp
                 var data = JsonConvert.DeserializeObject<Page>(json);
                 return data;
             }
+        }
+        /// <summary>
+        /// Gets an edge of a Page (ie. photos and videos)
+        /// </summary>
+        /// <param name="id">User ID</param>
+        /// <param name="edge">Edge to get</param>
+        /// <returns></returns>
+        public async Task<Page> GetPage(string id, PageEdge edge)
+        {
+            return null;
         }
     }
 }
