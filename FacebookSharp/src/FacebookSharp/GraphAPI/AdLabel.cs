@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -13,10 +14,15 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// Ad label ID
         /// </summary>
-        string id { get; set; }
-        public AdAccount account { get; set; }
-        public string created_time { get; set; }
+        [JsonProperty("id")]
+        string Id { get; set; }
+        [JsonProperty("account")]
+        public AdAccount Account { get; set; }
+        [JsonProperty("created_time")]
+        public string CreatedTime { get; set; }
+        [JsonProperty("name")]
         public string name { get; set; }
-        public string updated_time { get; set; }
+        [JsonProperty("updated_time")]
+        public string UpdatedTime { get; set; }
     }
 }

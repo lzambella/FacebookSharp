@@ -24,7 +24,7 @@ namespace UnitTests
 
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
             var page = await graphApi.GetPage("100008443867581");
-            var id = page.id;
+            var id = page.Id;
             Console.WriteLine(id);
             Assert.Equal("100008443867581", id);
         }

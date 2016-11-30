@@ -10,6 +10,7 @@ namespace FacebookSharp.GraphAPI
     /// </summary>
     public class AgencyClientDeclaration
     {
+        //TODO: refactor this
         /// <summary>
         /// Whether this account is for an agency representing a client
         /// </summary>

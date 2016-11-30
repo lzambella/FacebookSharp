@@ -2,21 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
     public class AdStudy
     {
-        public Business business { get; set; }
-        public string canceled_time { get; set; }
-        public User created_by { get; set; }
-        public string created_ttime { get; set; }
-        public string description { get; set; }
-        public string end_time { get; set; }
-        public string id { get; set; }
-        public string cooldown_start_time { get; set; }
-        public string type { get; set; }
-        public User updated_by { get; set; }
-        public string update_time { get; set; } 
+        [JsonProperty("business")]
+        public Business Business { get; set; }
+        [JsonProperty("canceled_time")]
+        public string CanceledTime { get; set; }
+        [JsonProperty("created_by")]
+        public User CreatedBy { get; set; }
+        [JsonProperty("created_time")]
+        public string CreatedTime { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("cooldown_start_time")]
+        public string CooldownStartTime { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
+        [JsonProperty("updated_by")]
+        public User UpdatedBy { get; set; }
+        //todo:
+        [JsonProperty("update_time")]
+        public string UpdateTime { get; set; } 
     }
 }

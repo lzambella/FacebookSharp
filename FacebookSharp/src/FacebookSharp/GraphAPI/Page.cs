@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -13,40 +14,60 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// Page ID. No access token is required to access this field
         /// </summary>
-        public string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
         /// <summary>
         /// Information about the Page
         /// </summary>
-        public string about { get; set; }
+        [JsonProperty("about")]
+        public string About { get; set; }
         /// <summary>
         /// The access token you can use to act as the Page. Only visible to Page Admins. If your business requires two-factor authentication, and the person hasn't authenticated, this field may not be returned
         /// </summary>
-        public string access_token { get; set; }
+        [JsonProperty("access_token")]
+        public string AccessToken { get; set; }
         /// <summary>
         /// The Page's currently running promotion campaign
         /// </summary>
-        public AdCampaign ad_campaign { get; set; }
-
-        public string affilition { get; set; }
-        public string app_id { get; set; }
+        [JsonProperty("ad_campaign")]
+        public AdCampaign AdCampaign { get; set; }
+        [JsonProperty("affilition")]
+        public string Affilition { get; set; }
+        [JsonProperty("app_id")]
+        public string Appid { get; set; }
         //TODO: Implement AppLinks object
-        public object app_links { get; set; }
-        public string artists_we_like { get; set; }
-        public string attire { get; set; }
-        public string awards { get; set; }
-        public string band_interests { get; set; }
-        public string band_members { get; set; }
-        public Page best_page { get; set; }
-        public string bio { get; set; }
-        public string birthday { get; set; }
-        public string booking_agent { get; set; }
+        [JsonProperty("app_links")]
+        public object AppLinks { get; set; }
+        [JsonProperty("artists_we_like")]
+        public string ArtistsWeLike { get; set; }
+        [JsonProperty("attire")]
+        public string Attire { get; set; }
+        [JsonProperty("awards")]
+        public string Awards { get; set; }
+        [JsonProperty("band_interests")]
+        public string BandInterests { get; set; }
+        [JsonProperty("band_members")]
+        public string BandMembers { get; set; }
+        [JsonProperty("best_page")]
+        public Page BestPage { get; set; }
+        [JsonProperty("bio")]
+        public string Bio { get; set; }
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+        [JsonProperty("booking_agent")]
+        public string BookingAgent { get; set; }
         //TODO: Is this a business object?
-        public Business business { get; set; }
-        public bool can_checkin { get; set; }
-        public bool can_post { get; set; }
-        public string category { get; set; }
+        [JsonProperty("business")]
+        public Business Business { get; set; }
+        [JsonProperty("can_checkin")]
+        public bool CanCheckin { get; set; }
+        [JsonProperty("can_post")]
+        public bool CanPost { get; set; }
+        [JsonProperty("category")]
+        public string Category { get; set; }
         //TODO: implement PageCategory
-        public object category_list { get; set; }
+        [JsonProperty("category_list")]
+        public object CategoryList { get; set; }
         //TODO: finish implementing Page
 
     }
