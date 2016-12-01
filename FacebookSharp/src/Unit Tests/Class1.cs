@@ -44,10 +44,8 @@ namespace UnitTests
         {
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
-            var fields = new PhotoField()
-            {
-                Link = true
-            };
+            var fields = new PhotoField();
+            fields.Fields.Add("link");
             var page = await graphApi.GetPhotos("421109484727629", fields);
             Assert.NotEmpty(page.PhotoNodes.First().From.Id);
         }
