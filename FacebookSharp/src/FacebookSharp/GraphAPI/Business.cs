@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -13,40 +14,50 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// The name of the business
         /// </summary>
-        string name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
         /// <summary>
         /// ID for the timezone
         /// </summary>
-        int timezone_id { get; set; }
+        [JsonProperty("timezone_id")]
+        public int TimezoneId { get; set; }
         /// <summary>
         /// The object of the primary page associated with this business manager.
         /// </summary>
-        PrimaryPage primary_page { get; set; }
+        [JsonProperty("primary_usage")]
+        public PrimaryPage PrimaryUsage { get; set; }
         /// <summary>
         /// The ID of the business manager
         /// </summary>
-        long id { get; set; }
+        [JsonProperty("id")]
+        public long Id { get; set; }
         /// <summary>
         /// The last time this business manager was updated
         /// </summary>
-        string update_time { get; set; }
+        [JsonProperty("update_time")]
+        public string UpdateTime { get; set; }
         /// <summary>
         /// The last user(name and id) who have updated this business manager
         /// </summary>
-        BasicUser updated_by { get; set; }
+        [JsonProperty("updated_by")]
+        public BasicUser UpdatedBy { get; set; }
         /// <summary>
         /// The time this brand was created
         /// </summary>
-        string creation_time { get; set; }
+        [JsonProperty("creation_time")]
+        public string CreationTime { get; set; }
         /// <summary>
         /// The user (name and id) who has created this business manager
         /// </summary>
-        BasicUser created_by { get; set; }
+        [JsonProperty("created_by")]
+        public BasicUser CreatedBy { get; set; }
     }
 
-    internal class BasicUser
+    public class BasicUser
     {
-        string name { get; set; }
-        string id { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }

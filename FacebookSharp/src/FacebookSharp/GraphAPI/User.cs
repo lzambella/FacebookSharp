@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -10,11 +11,13 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// The id of this person's user account. This ID is unique to each app and cannot be used across different apps. 
         /// </summary>
-        string id { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
         /// <summary>
         /// Equivalent to the bio field
         /// </summary>
-        string about { get; set; }
+        [JsonProperty("about")]
+        public string About { get; set; }
 
     }
 }

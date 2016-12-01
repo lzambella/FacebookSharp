@@ -7,6 +7,7 @@ using Xunit;
 using FacebookSharp.GraphAPI;
 using System.IO;
 using System.Text;
+using FacebookSharp.GraphAPI.Fields;
 
 namespace UnitTests
 {
@@ -29,7 +30,27 @@ namespace UnitTests
             Assert.Equal("100008443867581", id);
         }
 
+        [Fact]
+        public async Task PhotoTest()
+        {
+            var token = LoadToken();
+            var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
+            var page = await graphApi.GetPhotos("421109484727629");
+            Assert.True(page.PhotoNodes.Any());
+        }
 
+        [Fact]
+        public async Task PhotoTest2()
+        {
+            var token = LoadToken();
+            var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
+            var fields = new PhotoField()
+            {
+                Link = true
+            };
+            var page = await graphApi.GetPhotos("421109484727629", fields);
+            Assert.NotEmpty(page.PhotoNodes.First().From.Id);
+        }
         private string LoadToken()
         {
             return File.ReadAllText("token.txt", Encoding.UTF8);

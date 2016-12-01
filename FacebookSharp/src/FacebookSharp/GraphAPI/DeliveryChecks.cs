@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -10,8 +11,11 @@ namespace FacebookSharp.GraphAPI
     /// </summary>
     public class DeliveryChecks
     {
-        public string check_name { get; set; }
-        public string summary { get; set; }
-        public string description { get; set; }
+        [JsonProperty("check_name")]
+        public string CheckName { get; set; }
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

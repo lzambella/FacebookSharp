@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -13,6 +14,7 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// Number of points that this achievement is worth. Total points per game may not exceed 1000 points limit, which is enforced
         /// </summary>
-        int points { get; set; }
+        [JsonProperty("points")]
+        public int Points { get; set; }
     }
 }

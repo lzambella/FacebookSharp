@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 namespace FacebookSharp.GraphAPI
 {
     /// <summary>
@@ -14,20 +14,32 @@ namespace FacebookSharp.GraphAPI
         /// <summary>
         /// Whether this account is for an agency representing a client
         /// </summary>
-        int agency_representing_client { get; set; }
+        [JsonProperty("agency_representing_client")]
+        public int AgencyRepresentingClient { get; set; }
         /// <summary>
         /// Whether the client is based in France
         /// </summary>
-        int client_based_in_france { get; set; }
-        string client_city { get;  set; }
-        string client_country_code { get; set; }
-        string client_email_address { get; set; }
-        string client_name { get; set; }
-        string client_postal_code { get; set; }
-        string client_province { get; set; }
-        string client_street { get; set; }
-        string client_street2 { get; set; }
-        int has_written_mandate_from_advertiser { get; set; }
-        int is_client_paying_invoices { get; set; }
+        [JsonProperty("client_based_in_france")]
+        public int ClientBasedInFrance { get; set; }
+        [JsonProperty("client_city")]
+        public string ClientCity { get; set; }
+        [JsonProperty("client_country_code")]
+        public string ClientCountryCode { get; set; }
+        [JsonProperty("client_email_address")]
+        public string ClientEmailAddress { get; set; }
+        [JsonProperty("client_name")]
+        public string ClientName { get; set; }
+        [JsonProperty("client_postal_code")]
+        public string ClientPostalCode { get; set; }
+        [JsonProperty("client_province")]
+        public string ClientProvince { get; set; }
+        [JsonProperty("client_street")]
+        public string ClientStreet { get; set; }
+        [JsonProperty("client_street2")]
+        public string ClientStreet2 { get; set; }
+        [JsonProperty("has_written_mandate_from_advertiser")]
+        public int HasWrittenMandateFromAdvertiser { get; set; }
+        [JsonProperty("is_client_paying_invoices")]
+        public int IsClientPayingInvoices { get; set; }
     }
 }

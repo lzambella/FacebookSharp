@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -10,8 +11,11 @@ namespace FacebookSharp.GraphAPI
     /// </summary>
     public class PrimaryPage
     {
-        string catagory { get; set; }
-        string name { get; set; }
-        string id { get; set; }
+        [JsonProperty("catagory")]
+        public string Catagory { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }
