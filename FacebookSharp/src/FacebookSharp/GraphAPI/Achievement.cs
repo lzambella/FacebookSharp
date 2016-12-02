@@ -42,6 +42,6 @@ namespace FacebookSharp.GraphAPI
         /// Indicates whether gaining the achievement published a feed story for the user.
         /// </summary>
         [JsonProperty("no_feed_story")]
-        bool NoFeedStory { get; set; }
+        public bool NoFeedStory { get; set; }
     }
 }

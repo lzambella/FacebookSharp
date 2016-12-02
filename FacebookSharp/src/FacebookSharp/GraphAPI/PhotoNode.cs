@@ -28,7 +28,36 @@ namespace FacebookSharp.GraphAPI
         public Event AssociatedEvent { get; set; }
         [JsonProperty("from")]
         public User From { get; set; }
-
+        [JsonProperty("height")]
+        public UInt32 Height { get; set; }
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
+        [JsonProperty("images")]
+        public IList<object> Images { get; set; }
+        [JsonProperty("link")]
+        public string Link { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("name_tags")]
+        public IList<object> NameTags { get; set; }
+        [JsonProperty("page_story_id")]
+        public string PageStoryId { get; set; }
+        [JsonProperty("picture")]
+        public string Picture { get; set; }
+        [JsonProperty("place")]
+        public object Place { get; set; }
+        [JsonProperty("position")]
+        public UInt32 Position { get; set; }
+        [JsonProperty("source")]
+        public string Source { get; set; }
+        [JsonProperty("target")]
+        public object Target { get; set; }
+        [JsonProperty("updated_time")]
+        public string UpdatedTime { get; set; }
+        [JsonProperty("webp_images")]
+        public IList<object> WebpImages { get; set; }
+        [JsonProperty("width")]
+        public UInt32 Width { get; set; }
 
     }
 }

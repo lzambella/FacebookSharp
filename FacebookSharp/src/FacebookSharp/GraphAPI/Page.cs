@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FacebookSharp.GraphAPI
 {
@@ -68,6 +70,66 @@ namespace FacebookSharp.GraphAPI
         //TODO: implement PageCategory
         [JsonProperty("category_list")]
         public object CategoryList { get; set; }
+        [JsonProperty("checkins")]
+        public uint CheckIns { get; set; }
+        [JsonProperty("company_overview")]
+        public string CompanyOverview { get; set; }
+        // TODO: implement MailingAddress
+        [JsonProperty("contact_address")]
+        public object MailingAddress { get; set; }
+        [JsonProperty("context")]
+        public object Context { get; set; }
+        [JsonProperty("cover")]
+        public object Cover { get; set; }
+        [JsonProperty("culinary_team")]
+        public string CulinaryTeam { get; set; }
+        [JsonProperty("current_location")]
+        public string CurrentLocation { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("description_html")]
+        public string DescriptionHtml { get; set; }
+        [JsonProperty("directed_by")]
+        public string DirectedBy { get; set; }
+        [JsonProperty("display_subtext")]
+        public string DisplaySubtext { get; set; }
+        [JsonProperty("displayed_message_response_time")]
+        public string DisplayedMessageRespponseTime { get; set; }
+        [JsonProperty("emails")]
+        public IList<string> Emails { get; set; }
+        [JsonProperty("engagement")]
+        public object Engagement { get; set; }
+        [JsonProperty("fan_count")]
+        public uint FanCount { get; set; }
+        [JsonProperty("featured_video")]
+        public object FeaturedVideo { get; set; }
+        [JsonProperty("features")]
+        public string Features { get; set; }
+        [JsonProperty("food_styles")]
+        public IList<string> FoodStyles { get; set; }
+        [JsonProperty("founded")]
+        public string Founded { get; set; }
+        [JsonProperty("general_info")]
+        public string GeneralInfo { get; set; }
+        [JsonProperty("general_manager")]
+        public string GeneralManager { get; set; }
+        [JsonProperty("genre")]
+        public string Genre { get; set; }
+        [JsonProperty("global_brand_page_name")]
+        public string GlobalBrandPageName { get; set; }
+        [JsonProperty("global_brand_root_id")]
+        public string GlobalBrandRootId { get; set; }
+        [JsonProperty("has_added_app")]
+        public bool HasAddedApp { get; set; }
+        [JsonProperty("hometown")]
+        public string Hometown { get; set; }
+        [JsonProperty("hours")]
+        public IDictionary<string, string> Hours { get; set; }
+        [JsonProperty("impressum")]
+        public string Impressum { get; set; }
+        [JsonProperty("influences")]
+        public string Influences { get; set; }
+
         //TODO: finish implementing Page
 
     }
