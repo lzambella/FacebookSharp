@@ -18,6 +18,8 @@ namespace FacebookSharp.GraphAPI
         /// </summary>
         [JsonProperty("about")]
         public string About { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
     }
 }

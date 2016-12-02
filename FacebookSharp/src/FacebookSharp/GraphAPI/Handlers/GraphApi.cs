@@ -1,13 +1,13 @@
 ﻿using System;
-using System.IO;
-using System.Net;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using FacebookSharp.GraphAPI;
-using FacebookSharp.GraphAPI.Fields;
-using Newtonsoft.Json;
 
-namespace FacebookSharp
+namespace FacebookSharp.GraphAPI.Handlers
 {
+    /// <summary>
+    /// Every handler should inherit this
+    /// </summary>
     public class GraphApi
     {
         /// <summary>
@@ -17,37 +17,28 @@ namespace FacebookSharp
         {
             TwoEight,
         }
-        /// <summary>
-        /// Graph API Token
-        /// </summary>
+
         public string Token { get; set; }
-        /// <summary>
-        /// API version to use
-        /// </summary>
         public ApiVersion Version { get; set; }
-        /// <summary>
-        /// Create a new GraphApi object that allows
-        /// use of the Facebook API
-        /// </summary>
-        /// <param name="token">Graph API token</param>
+
         public GraphApi(string token, ApiVersion version)
         {
             Token = token;
             Version = version;
         }
-
         /// <summary>
         /// Gets the string value of the API version contained in Version
         /// </summary>
         /// <returns></returns>
-        private string GetVersion()
+        public string GetVersion()
         {
             switch (Version)
             {
-                case ApiVersion.TwoEight:
+                case PageHandler.ApiVersion.TwoEight:
                     return "v2.8";
             }
             return "";
         }
     }
+
 }

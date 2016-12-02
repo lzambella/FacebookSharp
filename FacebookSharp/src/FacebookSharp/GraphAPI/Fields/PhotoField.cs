@@ -13,18 +13,22 @@ namespace FacebookSharp.GraphAPI.Fields
         /// </summary>
         public IList<string> Fields { get; set; }
 
+        public PhotoField()
+        {
+            Fields = new List<string>();
+        }
         /// <summary>
         /// Generates url fields corresponding to the data 
         /// </summary>
         /// <returns></returns>
         public string GenerateFields()
         {
-            var s = "?fields=";
+            var s = "fields=";
 
             for (var i = 0; i < Fields.Count; i++)
             {
                 s += Fields[i];
-                if (!(i == Fields.Count - 1))
+                if (i != Fields.Count - 1)
                     s += ',';
             }
             return s;

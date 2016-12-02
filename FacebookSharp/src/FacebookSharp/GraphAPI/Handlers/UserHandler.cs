@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FacebookSharp.GraphAPI
+﻿namespace FacebookSharp.GraphAPI.Handlers
 {
     /// <summary>
     /// Class to handling getting data from Users
     /// </summary>
-    public class UserHandler
+    public class UserHandler : GraphApi
     {
-        private string _token { get; set; }
-        public UserHandler(GraphAPI apiObject)
+        public UserHandler(string token, ApiVersion version) : base(token, version)
         {
-            
         }
-
     }
 }

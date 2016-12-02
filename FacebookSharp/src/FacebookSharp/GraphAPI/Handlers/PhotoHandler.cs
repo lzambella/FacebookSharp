@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace FacebookSharp.GraphAPI.Handlers
 {
     /// <summary>
-    /// Every handler should inherit this
+    /// Class for getting a single photo and its data
     /// </summary>
-    public class GraphApiHandler
+    public class PhotoHandler
     {
     }
 }
