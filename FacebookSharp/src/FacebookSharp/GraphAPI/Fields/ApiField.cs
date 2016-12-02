@@ -6,14 +6,14 @@ namespace FacebookSharp.GraphAPI.Fields
     /// <summary>
     /// Different fields for getting data from a Photo object
     /// </summary>
-    public class PhotoField
+    public class ApiField
     {
         /// <summary>
         /// List of fields as defined by https://developers.facebook.com/docs/graph-api/reference/photo
         /// </summary>
         public IList<string> Fields { get; set; }
 
-        public PhotoField()
+        public ApiField()
         {
             Fields = new List<string>();
         }
