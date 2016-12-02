@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using FacebookSharp;
-using Xunit;
-using FacebookSharp.GraphAPI;
-using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using FacebookSharp.GraphAPI.Fields;
 using FacebookSharp.GraphAPI.Handlers;
+using Xunit;
 
-namespace UnitTests
+namespace Unit_Tests
 {
-    public class UnitTests
+    public class PageTests
     {
         /// <summary>
         /// Test whether we can load a known user from the API
@@ -53,7 +49,7 @@ namespace UnitTests
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
             var photoHandler = new PageHandler(graphApi, "421109484727629");
-            var fields = new PhotoField();
+            var fields = new ApiField();
             fields.Fields.Add("created_time");
             var photos = await photoHandler.GetPhotos(fields);
             Assert.NotEmpty(photos.PhotoNodes.First().CreatedTime);
@@ -68,7 +64,7 @@ namespace UnitTests
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
             var photoHandler = new PageHandler(graphApi, "421109484727629");
-            var fields = new PhotoField();
+            var fields = new ApiField();
             fields.Fields.Add("created_time");
             fields.Fields.Add("from");
             var photos = await photoHandler.GetPhotos(fields);
