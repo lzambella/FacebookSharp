@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using FacebookSharp.GraphAPI.Fields;
+using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI.Handlers
 {
@@ -38,6 +42,38 @@ namespace FacebookSharp.GraphAPI.Handlers
                     return "v2.8";
             }
             return "";
+        }
+
+        public async Task<string> GetJson(string id)
+        {
+            var http = $"https://graph.facebook.com/{GetVersion()}/{id}?access_token={Token}";
+            var request = WebRequest.Create(http);
+            request.ContentType = "application/json; charset=utf-8";
+            var response = (HttpWebResponse)await request.GetResponseAsync();
+            if (response == null)
+                return null;
+
+            using (var sr = new StreamReader(response.GetResponseStream()))
+            {
+                var json = await sr.ReadToEndAsync();
+                return json;
+            }
+        }
+
+        public async Task<string> GetJson(string id, ApiField fields)
+        {
+            var http = $"https://graph.facebook.com/{GetVersion()}/{id}?access_token={Token}&{fields.GenerateFields()}";
+            var request = WebRequest.Create(http);
+            request.ContentType = "application/json; charset=utf-8";
+            var response = (HttpWebResponse)await request.GetResponseAsync();
+            if (response == null)
+                return null;
+
+            using (var sr = new StreamReader(response.GetResponseStream()))
+            {
+                var json = await sr.ReadToEndAsync();
+                return json;
+            }
         }
     }
 

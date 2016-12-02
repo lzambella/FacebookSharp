@@ -9,6 +9,9 @@ using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI.Handlers
 {
+    /// <summary>
+    /// Gets data from Page object and its edges
+    /// </summary>
     public class PageHandler : GraphApi
     {
         /// <summary>
@@ -65,7 +68,7 @@ namespace FacebookSharp.GraphAPI.Handlers
         /// <param name="id"></param>
         /// <param name="fields">Fields of data to be returned</param>
         /// <returns></returns>
-        public async Task<Photo> GetPhotos(PhotoField fields)
+        public async Task<Photo> GetPhotos(ApiField fields)
         {
             var v = GetVersion();
             var url = $"https://graph.facebook.com/{v}/{PageId}/photos?access_token={Token}&{fields.GenerateFields()}";
