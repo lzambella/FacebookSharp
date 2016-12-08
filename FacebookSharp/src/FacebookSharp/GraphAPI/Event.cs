@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FacebookSharp.GraphAPI
 {
-    public class Event
+    public class Event : IProfile
     {
     }
 }

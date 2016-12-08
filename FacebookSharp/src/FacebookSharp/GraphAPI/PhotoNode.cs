@@ -33,13 +33,13 @@ namespace FacebookSharp.GraphAPI
         [JsonProperty("icon")]
         public string Icon { get; set; }
         [JsonProperty("images")]
-        public IList<object> Images { get; set; }
+        public IList<PlatformImageSource> Images { get; set; }
         [JsonProperty("link")]
         public string Link { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("name_tags")]
-        public IList<object> NameTags { get; set; }
+        public IList<EntityAtTextRange> NameTags { get; set; }
         [JsonProperty("page_story_id")]
         public string PageStoryId { get; set; }
         [JsonProperty("picture")]

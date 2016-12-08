@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
-    public class User
+    public class User : IProfile
     {
         /// <summary>
         /// The id of this person's user account. This ID is unique to each app and cannot be used across different apps. 

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using FacebookSharp.GraphAPI.Fields;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -11,7 +14,7 @@ namespace FacebookSharp.GraphAPI
     /// <summary>
     /// This represents a Facebook Page.
     /// </summary>
-    public class Page
+    public class Page : IProfile
     {
         /// <summary>
         /// Page ID. No access token is required to access this field
@@ -132,5 +135,68 @@ namespace FacebookSharp.GraphAPI
 
         //TODO: finish implementing Page
 
+
+        // Everything ahead is all the edges a page has
+
+
+        [Obsolete("Same things as GetPhotos(false), exists to prevent rewrite of tests.")]
+        public async Task<Photo> GetPhotos()
+        {
+            return await GetPhotos(false);
+        }
+
+        /// <summary>
+        /// Gets the Photo edge of a page
+        /// </summary>
+        /// <param name="uploaded">true: uploaded images on page</param>
+        /// <returns>Photo object containing list of IDs and Names</returns>
+        public async Task<Photo> GetPhotos(bool uploaded)
+        {
+            var v = "v2.8";
+            var url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}";
+            var request = WebRequest.Create(url);
+            request.ContentType = "application/json; charset=utf-8";
+            var response = (HttpWebResponse)await request.GetResponseAsync();
+            if (response == null)
+                return null;
+
+            using (var sr = new StreamReader(response.GetResponseStream()))
+            {
+                var json = await sr.ReadToEndAsync();
+                var data = JsonConvert.DeserializeObject<Photo>(json);
+                return data;
+            }
+        }
+
+        /// <summary>
+        /// Gets Photo edge of a Page containing data pertaining to fields input
+        /// </summary>
+        /// <param name="fields">Fields of data to be returned</param>
+        /// <param name="uploaded">true: uploaded images on page false: profile pictures page has used</param>
+        /// <returns></returns>
+        public async Task<Photo> GetPhotos(ApiField fields, bool uploaded)
+        {
+            var v = "v2.8";
+            var url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}&{fields.GenerateFields()}";
+            if (uploaded)
+                url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}&{fields.GenerateFields()}&type=uploaded";
+            var request = WebRequest.Create(url);
+            request.ContentType = "application/json; charset=utf-8";
+            var response = (HttpWebResponse)await request.GetResponseAsync();
+            if (response == null)
+                return null;
+
+            using (var sr = new StreamReader(response.GetResponseStream()))
+            {
+                var json = await sr.ReadToEndAsync();
+                var data = JsonConvert.DeserializeObject<Photo>(json);
+                return data;
+            }
+        }
+        [Obsolete("Same things as GetPhotos(obj, false), exists to prevent rewrite of tests.")]
+        public async Task<Photo> GetPhotos(ApiField fields)
+        {
+            return await GetPhotos(fields, false);
+        }
     }
 }
