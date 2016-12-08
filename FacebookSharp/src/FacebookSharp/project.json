@@ -1,5 +1,7 @@
 {
   "version": "1.0.0-*",
+  "authors": [ "Luke Zambella" ],
+  "description": "Facebook Graph API bindings for .NET core.",
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
