@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FacebookSharp;
 using FacebookSharp.GraphAPI.Fields;
-using FacebookSharp.GraphAPI.Handlers;
 using Xunit;
 
 namespace Unit_Tests
@@ -21,8 +21,7 @@ namespace Unit_Tests
             var token = LoadToken();
 
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
-            var pageHandler = new PageHandler(graphApi, "100008443867581");
-            var page = await pageHandler.GetPage();
+            var page = await graphApi.GetPage("100008443867581");
             var id = page.Id;
             Assert.Equal("100008443867581", id);
         }
@@ -35,8 +34,8 @@ namespace Unit_Tests
         {
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
-            var pageHandler = new PageHandler(graphApi, "421109484727629");
-            var photos = await pageHandler.GetPhotos();
+            var page = await graphApi.GetPage("421109484727629");
+            var photos = await page.GetPhotos(true);
             Assert.True(photos.PhotoNodes.Any());
         }
         /// <summary>
@@ -48,10 +47,10 @@ namespace Unit_Tests
         {
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
-            var photoHandler = new PageHandler(graphApi, "421109484727629");
+            var user = await graphApi.GetPage("421109484727629");
             var fields = new ApiField();
             fields.Fields.Add("created_time");
-            var photos = await photoHandler.GetPhotos(fields);
+            var photos = await user.GetPhotos(fields, true);
             Assert.NotEmpty(photos.PhotoNodes.First().CreatedTime);
         }
         /// <summary>
@@ -63,11 +62,11 @@ namespace Unit_Tests
         {
             var token = LoadToken();
             var graphApi = new GraphApi(token, GraphApi.ApiVersion.TwoEight);
-            var photoHandler = new PageHandler(graphApi, "421109484727629");
+            var page = await graphApi.GetPage("421109484727629");
             var fields = new ApiField();
             fields.Fields.Add("created_time");
             fields.Fields.Add("from");
-            var photos = await photoHandler.GetPhotos(fields);
+            var photos = await page.GetPhotos(fields, true);
             Assert.NotEmpty(photos.PhotoNodes.First().CreatedTime);
             Assert.NotEmpty(photos.PhotoNodes.First().From.Name);
         }
