@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace FacebookSharp.GraphAPI
 {
-    public class PhotoNode
+    public class Photo
     {
         [JsonProperty("id")]
         public string Id { get; set; }
