@@ -132,7 +132,69 @@ namespace FacebookSharp.GraphAPI
         public string Impressum { get; set; }
         [JsonProperty("influences")]
         public string Influences { get; set; }
-
+        [JsonProperty("instant_articles_review_status")]
+        public int InstantArticlesReviewStatus { get; set; }
+        [JsonProperty("is_always_open")]
+        public bool IsAlwaysOpen { get; set; }
+        [JsonProperty("is_community_page")]
+        public bool IsCommunityPage { get; set; }
+        [JsonProperty("is_permanently_close")]
+        public bool IsPermanentlyClosed { get; set; }
+        [JsonProperty("is_published")]
+        public bool IsPublished { get; set; }
+        [JsonProperty("is_unclaimed")]
+        public bool IsUnclaimed { get; set; }
+        [JsonProperty("is_verified")]
+        public bool IsVerified { get; set; }
+        [JsonProperty("is_webhooks_subscribed")]
+        public bool IsWebhooksSubscribed { get; set; }
+        [JsonProperty("leadgen_tos_accepted")]
+        public bool LeadgenTosAccepted { get; set; }
+        [JsonProperty("link")]
+        public string Link { get; set; }
+        //TODO
+        [JsonProperty("location")]
+        public object Location { get; set; }
+        [JsonProperty("members")]
+        public string Members { get; set; }
+        [JsonProperty("mission")]
+        public string Mission { get; set; }
+        [JsonProperty("mpg")]
+        public string Mpg { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("name_with_location_descriptor")]
+        public string NameWithLocationDescriptor { get; set; }
+        [JsonProperty("network")]
+        public string Network { get; set; }
+        [JsonProperty("new_like_count")]
+        public uint NewLikeCount { get; set; }
+        [JsonProperty("offer_eligible")]
+        public bool OfferEligible { get; set; }
+        [JsonProperty("overall_star_rating")]
+        public float OverallStarRating { get; set; }
+        [JsonProperty("parent_page")]
+        public Page ParentPage { get; set; }
+        [JsonProperty("parking")]
+        public object Parking { get; set; }
+        [JsonProperty("payment_options")]
+        public object PaymentOptions { get; set; }
+        [JsonProperty("personal_info")]
+        public string PersonalInfo { get; set; }
+        [JsonProperty("personal_interests")]
+        public string PersonalInterests { get; set; }
+        [JsonProperty("pharma_safety_info")]
+        public string PharmaSafetyInfo { get; set; }
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+        [JsonProperty("place_type")]
+        public int PlaceType { get; set; }
+        [JsonProperty("plot_outline")]
+        public string PlotOutline { get; set; }
+        [JsonProperty("preferred_audience")]
+        public object PreferredAudience { get; set; }
+        [JsonProperty("press_contact")]
+        public string PressContact { get; set; }
         //TODO: finish implementing Page
 
 
@@ -140,7 +202,7 @@ namespace FacebookSharp.GraphAPI
 
 
         [Obsolete("Same things as GetPhotos(false), exists to prevent rewrite of tests.")]
-        public async Task<Photo> GetPhotos()
+        public async Task<PagePhotos> GetPhotos()
         {
             return await GetPhotos(false);
         }
@@ -150,7 +212,7 @@ namespace FacebookSharp.GraphAPI
         /// </summary>
         /// <param name="uploaded">true: uploaded images on page</param>
         /// <returns>Photo object containing list of IDs and Names</returns>
-        public async Task<Photo> GetPhotos(bool uploaded)
+        public async Task<PagePhotos> GetPhotos(bool uploaded)
         {
             var v = "v2.8";
             var url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}";
@@ -163,7 +225,7 @@ namespace FacebookSharp.GraphAPI
             using (var sr = new StreamReader(response.GetResponseStream()))
             {
                 var json = await sr.ReadToEndAsync();
-                var data = JsonConvert.DeserializeObject<Photo>(json);
+                var data = JsonConvert.DeserializeObject<PagePhotos>(json);
                 return data;
             }
         }
@@ -174,7 +236,7 @@ namespace FacebookSharp.GraphAPI
         /// <param name="fields">Fields of data to be returned</param>
         /// <param name="uploaded">true: uploaded images on page false: profile pictures page has used</param>
         /// <returns></returns>
-        public async Task<Photo> GetPhotos(ApiField fields, bool uploaded)
+        public async Task<PagePhotos> GetPhotos(ApiField fields, bool uploaded)
         {
             var v = "v2.8";
             var url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}&{fields.GenerateFields()}";
@@ -189,12 +251,14 @@ namespace FacebookSharp.GraphAPI
             using (var sr = new StreamReader(response.GetResponseStream()))
             {
                 var json = await sr.ReadToEndAsync();
-                var data = JsonConvert.DeserializeObject<Photo>(json);
+                var data = JsonConvert.DeserializeObject<PagePhotos>(json);
                 return data;
             }
         }
+
+
         [Obsolete("Same things as GetPhotos(obj, false), exists to prevent rewrite of tests.")]
-        public async Task<Photo> GetPhotos(ApiField fields)
+        public async Task<PagePhotos> GetPhotos(ApiField fields)
         {
             return await GetPhotos(fields, false);
         }
