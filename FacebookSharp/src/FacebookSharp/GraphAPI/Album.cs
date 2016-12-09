@@ -18,7 +18,7 @@ namespace FacebookSharp.GraphAPI
         [JsonProperty("count")]
         public int Count { get; set; }
         [JsonProperty("cover_photo")]
-        public Photo CoverPhoto { get; set; }
+        public PagePhotos CoverPhoto { get; set; }
         [JsonProperty("created_time")]
         public string CreatedTime { get; set; }
         [JsonProperty("description")]
