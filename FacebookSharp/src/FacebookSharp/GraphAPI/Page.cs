@@ -195,6 +195,44 @@ namespace FacebookSharp.GraphAPI
         public object PreferredAudience { get; set; }
         [JsonProperty("press_contact")]
         public string PressContact { get; set; }
+        [JsonProperty("price_range")]
+        public string PriceRange { get; set; }
+        [JsonProperty("produced_by")]
+        public string ProducedBy { get; set; }
+        [JsonProperty("products")]
+        public string Products { get; set; }
+        [JsonProperty("promotion_eligible")]
+        public bool PromotionEligible { get; set; }
+        [JsonProperty("promotion_ineligible_reason")]
+        public string PromotionIneligiblReason { get; set; }
+        [JsonProperty("public_transit")]
+        public string PublicTransit { get; set; }
+        [JsonProperty("publisher_space")]
+        public object PropertySpace { get; set; }
+        [JsonProperty("rating_count")]
+        public uint RatingCount { get; set; }
+        [JsonProperty("recipient")]
+        public string Recipient { get; set; }
+        [JsonProperty("record_label")]
+        public string RecordLabel { get; set; }
+        [JsonProperty("release_date")]
+        public string ReleaseDate { get; set; }
+        [JsonProperty("restaurant_services")]
+        public object RestaurantServices { get; set; }
+        [jJsonProperty("restaurant_specialties")]
+        public object RestaurantSpecialties { get; set; }
+        [JsonProperty("schedule")]
+        public string Schedule { get; set; }
+        [JsonProperty("screenplay_by")]
+        public string ScreenplayBy { get; set; }
+        [JsonProperty("season")]
+        public string Season { get; set; }
+        [JsonProperty("single_line_address")]
+        public string SingleLineAddress { get; set; }
+        [JsonProperty("starring")]
+        public string Starring { get; set; }
+        [JsonProperty("start_info")]
+        public object StartInfo { get; set; }
         //TODO: finish implementing Page
 
 
