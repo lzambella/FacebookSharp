@@ -219,7 +219,7 @@ namespace FacebookSharp.GraphAPI
         public string ReleaseDate { get; set; }
         [JsonProperty("restaurant_services")]
         public object RestaurantServices { get; set; }
-        [jJsonProperty("restaurant_specialties")]
+        [JsonProperty("restaurant_specialties")]
         public object RestaurantSpecialties { get; set; }
         [JsonProperty("schedule")]
         public string Schedule { get; set; }
@@ -233,8 +233,32 @@ namespace FacebookSharp.GraphAPI
         public string Starring { get; set; }
         [JsonProperty("start_info")]
         public object StartInfo { get; set; }
-        //TODO: finish implementing Page
-
+        [JsonProperty("store_location_descriptor")]
+        public string StoreLocationDescriptor { get; set; }
+        [JsonProperty("store_number")]
+        public uint StoreNumber { get; set; }
+        [JsonProperty("studio")]
+        public string Studio { get; set; }
+        [JsonProperty("supports_instant_articles")]
+        public bool SupportsInstantArticles { get; set; }
+        [JsonProperty("talking_about_count")]
+        public string TalkingAboutCount { get; set; }
+        [JsonProperty("unread_message_count")]
+        public uint UnreadMessageCount { get; set; }
+        [JsonProperty("unread_notif_count")]
+        public uint UnreadNotificationCount { get; set; }
+        [JsonProperty("username")]
+        public string Username { get; set; }
+        [JsonProperty("verification_status")]
+        public string VerificationStatus { get; set; }
+        [JsonProperty("voip_info")]
+        public object VoipInfo { get; set; }
+        [JsonProperty("website")]
+        public string Website { get; set; }
+        [JsonProperty("were_here_count")]
+        public uint WereHereCount { get; set; }
+        [JsonProperty("written_by")]
+        public string WrittenBy { get; set; }
 
         // Everything ahead is all the edges a page has
 
