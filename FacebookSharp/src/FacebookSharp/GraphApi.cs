@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using FacebookSharp.GraphAPI;
-using FacebookSharp.GraphAPI.Fields;
+using FacebookSharp.GraphAPI.ApiParameters;
 using Newtonsoft.Json;
 
 namespace FacebookSharp
@@ -46,14 +46,27 @@ namespace FacebookSharp
             }
             return "";
         }
-
+        /// <summary>
+        /// Gets the specified place.
+        /// </summary>
+        /// <param name="id">ID of the place.</param>
+        /// <returns>A Place</returns>
+        /*
+        public async Task<Place> GetPlace(string id, ApiField fields = null)
+        {
+            var json = "";
+            if (fields == null) json = await GetJson(id);
+            else json = await GetJson(id, fields);
+            return JsonConvert.DeserializeObject<Place>(json);
+        }
+        */
         /// <summary>
         /// Gets a User
         /// </summary>
         /// <param name="id">User ID</param>
         /// <param name="fields">Fields to grab from (such as description, date of birth...)</param>
         /// <returns>User object containing data related to the fields inputted</returns>
-        public async Task<User> GetUser(string id, ApiField fields = null)
+        public async Task<User> GetUser(string id, UserField fields = null)
         {
             var json = "";
             if (fields == null)
@@ -69,7 +82,8 @@ namespace FacebookSharp
         /// <param name="id">ID of the user to get from</param>
         /// <param name="fields">fields to get from</param>
         /// <returns>Page object containing data (such as description, date, name)</returns>
-        public async Task<Page> GetPage(string id, ApiField fields = null)
+        /*
+        public async Task<Page> GetPage(string id, IFieldHelper fields = null)
         {
             var json = "";
             if (fields == null)
@@ -78,7 +92,7 @@ namespace FacebookSharp
                 json = await GetJson(id, fields);
             return JsonConvert.DeserializeObject<Page>(json);
         }
-
+        */
 
         /// <summary>
         /// Gets json from an api call
@@ -107,9 +121,9 @@ namespace FacebookSharp
         /// <param name="id">ID of the page</param>
         /// <param name="fields">fields to grab</param>
         /// <returns>JSON string containing API data</returns>
-        private async Task<string> GetJson(string id, ApiField fields)
+        private async Task<string> GetJson(string id, IFieldHelper fields)
         {
-            var http = $"https://graph.facebook.com/{GetVersion()}/{id}?access_token={Token}&{fields.GenerateFields()}";
+            var http = $"https://graph.facebook.com/{GetVersion()}/{id}?{fields.GenerateFields()}&access_token={Token}";
             var request = WebRequest.Create(http);
             request.ContentType = "application/json; charset=utf-8";
             var response = (HttpWebResponse)await request.GetResponseAsync();
