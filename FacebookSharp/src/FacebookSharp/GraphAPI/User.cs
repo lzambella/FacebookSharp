@@ -83,6 +83,10 @@ namespace FacebookSharp.GraphAPI
         public string Website { get; set; }
         [JsonProperty("work")]
         public IList<object> Work { get; set; }
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
 
     }
 }

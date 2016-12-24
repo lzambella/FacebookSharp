@@ -5,10 +5,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using FacebookSharp.GraphAPI.Fields;
+using FacebookSharp.GraphAPI.ApiParameters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+/*
+ * TODO:
+ * Every field can only be obtained on demand (meaning a user has to select either none or any of the fields when grabbing data)
+ * The current way is to load those fields into a list and generate a string thats a part of the url (such as ?parameters=1,2,3,4).
+ * This works because we don't have to parse the values and convert them to valid fields but it also backfires because we give
+ * the user total control resulting in unspecified behavior is something is entered wrong. Find a way to perhaps let the user easily
+ * get the parameters and use them (maybe an enum will work?)
+ */
 namespace FacebookSharp.GraphAPI
 {
     /// <summary>
@@ -298,7 +305,7 @@ namespace FacebookSharp.GraphAPI
         /// <param name="fields">Fields of data to be returned</param>
         /// <param name="uploaded">true: uploaded images on page false: profile pictures page has used</param>
         /// <returns></returns>
-        public async Task<PagePhotos> GetPhotos(ApiField fields, bool uploaded)
+        public async Task<PagePhotos> GetPhotos(IFieldHelper fields, bool uploaded)
         {
             var v = "v2.8";
             var url = $"https://graph.facebook.com/{v}/{Id}/photos?access_token={GraphApi.Token}&{fields.GenerateFields()}";
@@ -316,13 +323,6 @@ namespace FacebookSharp.GraphAPI
                 var data = JsonConvert.DeserializeObject<PagePhotos>(json);
                 return data;
             }
-        }
-
-
-        [Obsolete("Same things as GetPhotos(obj, false), exists to prevent rewrite of tests.")]
-        public async Task<PagePhotos> GetPhotos(ApiField fields)
-        {
-            return await GetPhotos(fields, false);
         }
     }
 }
